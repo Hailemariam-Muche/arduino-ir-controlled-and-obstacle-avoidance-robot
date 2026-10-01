@@ -13,4 +13,5 @@ This video demonstrates the developed Arduino-based mobile robot.
 
 ## Video
 
-[Watch the Robot Demonstration](PASTE_YOUR_YOUTUBE_LINK_HERE)
+[Watch the Robot Demonstration](
+https://youtube.com/shorts/BC4ftcGQRM4?si=Kkz86XY623kS5Utc.)
