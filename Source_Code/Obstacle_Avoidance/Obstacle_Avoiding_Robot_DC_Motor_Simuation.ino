@@ -1,0 +1,186 @@
+#define Trigger 7
+#define Echo 8
+
+// Left motor - L293D
+#define Left_IN1 2
+#define Left_IN2 3
+#define Left_EN 6
+
+// Right motor - L293D
+#define Right_IN1 4
+#define Right_IN2 5
+#define Right_EN 9
+
+void setup() {
+
+pinMode(Trigger, OUTPUT);
+pinMode(Echo, INPUT);
+
+pinMode(Left_IN1, OUTPUT);
+pinMode(Left_IN2, OUTPUT);
+pinMode(Left_EN, OUTPUT);
+
+pinMode(Right_IN1, OUTPUT);
+pinMode(Right_IN2, OUTPUT);
+pinMode(Right_EN, OUTPUT);
+
+goStop();
+}
+
+// -------------------------
+// Move Forward
+// -------------------------
+void goForward() {
+
+digitalWrite(Left_IN1, HIGH);
+digitalWrite(Left_IN2, LOW);
+
+digitalWrite(Right_IN1, HIGH);
+digitalWrite(Right_IN2, LOW);
+
+digitalWrite(Left_EN, HIGH);
+digitalWrite(Right_EN, HIGH);
+}
+
+// -------------------------
+// Move Reverse
+// -------------------------
+void goReverse() {
+
+digitalWrite(Left_IN1, LOW);
+digitalWrite(Left_IN2, HIGH);
+
+digitalWrite(Right_IN1, LOW);
+digitalWrite(Right_IN2, HIGH);
+
+digitalWrite(Left_EN, HIGH);
+digitalWrite(Right_EN, HIGH);
+}
+
+// -------------------------
+// Spin Right
+// -------------------------
+void goSpinRight() {
+
+digitalWrite(Left_IN1, HIGH);
+digitalWrite(Left_IN2, LOW);
+
+digitalWrite(Right_IN1, LOW);
+digitalWrite(Right_IN2, HIGH);
+
+digitalWrite(Left_EN, HIGH);
+digitalWrite(Right_EN, HIGH);
+}
+
+// -------------------------
+// Spin Left
+// -------------------------
+void goSpinLeft() {
+
+digitalWrite(Left_IN1, LOW);
+digitalWrite(Left_IN2, HIGH);
+
+digitalWrite(Right_IN1, HIGH);
+digitalWrite(Right_IN2, LOW);
+
+digitalWrite(Left_EN, HIGH);
+digitalWrite(Right_EN, HIGH);
+}
+
+// -------------------------
+// Stop
+// -------------------------
+void goStop() {
+
+digitalWrite(Left_IN1, LOW);
+digitalWrite(Left_IN2, LOW);
+
+digitalWrite(Right_IN1, LOW);
+digitalWrite(Right_IN2, LOW);
+
+digitalWrite(Left_EN, LOW);
+digitalWrite(Right_EN, LOW);
+}
+
+// -------------------------
+// Measure Distance
+// -------------------------
+int measureDistance() {
+
+digitalWrite(Trigger, LOW);
+delayMicroseconds(2);
+
+digitalWrite(Trigger, HIGH);
+delayMicroseconds(10);
+
+digitalWrite(Trigger, LOW);
+
+long duration = pulseIn(Echo, HIGH);
+
+int distance = duration / 74 / 2;
+
+return distance;
+}
+
+// -------------------------
+// Main Program
+// -------------------------
+void loop() {
+
+int distance = measureDistance();
+
+// Clear path
+if (distance >= 5) {
+
+goForward();
+}
+
+// Obstacle detected
+else {
+
+// Stop
+goStop();
+delay(300);
+
+// Reverse
+goReverse();
+delay(1000);
+
+// Stop
+goStop();
+delay(300);
+
+// Spin right
+goSpinRight();
+delay(700);
+
+// Stop
+goStop();
+delay(300);
+
+// Measure again
+distance = measureDistance();
+
+// Right side/path is clear
+if (distance >= 5) {
+
+goForward();
+}
+
+// Still blocked
+else {
+
+// Spin left
+goSpinLeft();
+delay(1400);
+
+goStop();
+delay(300);
+
+// Continue forward
+goForward();
+}
+}
+
+delay(100);
+}
