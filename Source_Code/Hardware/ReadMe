@@ -1,1 +1,108 @@
+HARDWARE – ARDUINO-BASED REMOTE-CONTROLLED AND
+OBSTACLE-AVOIDANCE WHEELED ROBOT
+================================================
 
+OVERVIEW
+--------
+This directory contains the hardware design, assembly, and prototype
+evidence for the Arduino-based Remote-Controlled and Obstacle-Avoidance
+Wheeled Robot.
+
+The robot was developed as a wheeled mobile robotic platform integrating
+Arduino-based control, DC geared motors, an L293D motor driver, IR remote
+control, an ultrasonic sensor, and a servo motor for obstacle detection
+and avoidance.
+
+
+MAIN HARDWARE COMPONENTS
+------------------------
+- Arduino microcontroller
+- Two DC geared motors
+- L293D motor driver
+- IR receiver module
+- IR remote controller
+- Ultrasonic distance sensor
+- Servo motor
+- Robot chassis/body
+- Wheels
+- Caster/dummy wheel
+- Battery/power supply
+- Connecting wires and supporting components
+
+
+ROBOT CONTROL SYSTEM
+--------------------
+The Arduino serves as the main controller of the robot.
+
+For remote-controlled operation, commands received from the IR remote
+control are processed by the Arduino and converted into appropriate
+motor-control signals through the L293D motor driver.
+
+The two DC geared motors provide differential movement, including:
+
+- Forward movement
+- Reverse movement
+- Left turn
+- Right turn
+- Stop
+
+
+OBSTACLE-AVOIDANCE SYSTEM
+-------------------------
+The obstacle-avoidance section uses an ultrasonic distance sensor to
+detect objects in the robot's path.
+
+A servo motor is used to position the ultrasonic sensor and support
+directional obstacle detection. Based on the detected distance, the
+Arduino determines an appropriate movement response and controls the
+DC geared motors accordingly.
+
+
+MOTOR DRIVE
+-----------
+The L293D motor driver is used as the interface between the Arduino
+controller and the DC geared motors.
+
+It provides the required motor-control interface and allows the Arduino
+to control the direction and operation of the two geared motors.
+
+
+HARDWARE DEVELOPMENT PROCESS
+----------------------------
+The hardware development involved:
+
+1. Selection of the robot control and sensing components.
+2. Design of the electronic control circuit.
+3. Simulation and verification of the circuit using Proteus.
+4. Assembly of the motor driver and control circuitry.
+5. Mechanical assembly of the robot chassis and wheels.
+6. Installation of the ultrasonic sensor and servo motor.
+7. Integration of the IR receiver and remote-control system.
+8. Connection of the Arduino to the motor driver and sensors.
+9. Programming and hardware-software integration.
+10. Testing and verification of the completed robot prototype.
+
+
+HARDWARE EVIDENCE
+-----------------
+This directory may contain:
+
+- Circuit diagrams
+- Proteus simulation screenshots
+- Robot assembly photographs
+- Electronic circuit photographs
+- Motor and wheel assembly photographs
+- Ultrasonic sensor and servo photographs
+- Completed robot prototype photographs
+- Hardware testing photographs
+
+
+DIRECTORY ORGANIZATION
+----------------------
+Recommended organization:
+
+Hardware/
+|
++-- README.txt
+|
++--
