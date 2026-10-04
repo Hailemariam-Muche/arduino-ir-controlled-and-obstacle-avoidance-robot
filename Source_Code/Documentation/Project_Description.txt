@@ -1,1 +1,5 @@
+PROJECT DOCUMENTATION
 
+This directory contains project descriptions, technical documentation,
+development information, and supporting documentation for the
+Arduino-Based Remote-Controlled and Obstacle-Avoidance Robot.
